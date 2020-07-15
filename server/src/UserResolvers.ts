@@ -1,7 +1,20 @@
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Arg,
+  ObjectType,
+  Field,
+} from 'type-graphql';
 import { hash, compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { User } from './entity/User';
 
+@ObjectType()
+class LoginResponse {
+  @Field()
+  accessToken: string;
+}
 @Resolver()
 export class UserResolver {
   @Query(() => String)
